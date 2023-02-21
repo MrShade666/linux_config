@@ -80,6 +80,13 @@ On_IPurple='\e[0;105m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
+### DEFINE THE ACTION FOR THE HOME/END/DELETE/INSERT KEYS
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" overwrite-mode
+# type cat in a terminal, then pressing the keys will give you the right number to use
+
 # Задаем параметры истории и отображения
 export HISTIGNORE="&:ls:[bf]g:exit:history*"
 export HISTCONTROL=ignoredups:ignorespace
@@ -122,6 +129,25 @@ if [ `id -un` = root ]; then
  else
   PS1="┌ ${Green}\u${Color_Off} [${BPurple}\w${Color_Off}] \n└─ \$ "
 fi
+
+### BASH OPTIONS
+  # \$ - specifies whether the user is root (#) or otherwise ($)
+  # \d – date (day/month/date)
+  # \h – hostname (short)
+  # \H – full hostname (domain name)
+  # \j – number of jobs being managed by the shell
+  # \l – the basename of the shells terminal device
+  # \r – carriage return
+  # \s – the name of the shell
+  # \t – time (hour:minute:second)
+  # \A – time, 24-hour, without seconds
+  # \u – current username
+  # \v – bASH version
+  # \V – extra information about the BASH version
+  # \w – current working directory ($HOME is represented by ~)
+  # \W – the basename of the working directory ($HOME is represented by ~)
+  # \[ – start a sequence of non-displayed characters (useful if you want to add a command or instruction set to the prompt)
+  # \] – close or end a sequence of non-displayed characters
 
 # Предотвращает случайное удаление файлов.
 alias mkdir='mkdir -p'
@@ -202,6 +228,3 @@ function extract {
         fi
     fi
 }
-
-
-. "/etc/letsencrypt/acme.sh.env"
