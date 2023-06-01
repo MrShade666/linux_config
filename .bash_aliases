@@ -76,3 +76,10 @@ alias Enable="systemctl enable"
 alias scisen="systemctl is-enabled"
 alias Disable="systemctl disable"
 alias sclist="systemctl list-unit-files | less" # Список служб
+
+# Proxmox
+function killvm () {
+	pids_vm=$(ps aux | grep "/usr/bin/kvm -id $1" | awk '{print $2}')
+	read -r pid_vm <<< "$pids_vm"
+	kill -9 $pid_vm
+}
